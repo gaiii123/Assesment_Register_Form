@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { } from 'react'
 import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
-import { Stepper, StepLabel, Step } from '@mui/material'
+import { Stepper, StepLabel, Step, Container } from '@mui/material'
+import { useTwoStepContext } from './StepContext'
 
 export default function RegisterPage() {
 
+    const {currentStep}= useTwoStepContext();
     function showStep(step){
+        console.log("step:",step)
         switch(step){
             case 1 :
                 return <FirstStep/>
@@ -14,10 +17,19 @@ export default function RegisterPage() {
         }
     }
   return (
-    <div>
-       <h2 style={{color:'red'}}>Two Step Registration Form</h2>
+    <Container
+      maxWidth='sm'
+      style={{
+        marginTop: '2rem',
+        padding: '2rem',
+        border: '1px solid #ccc',
+        borderRadius: '8px',
+        backgroundColor: '#f9f9f9'
+      }}
+    >
+       <h2 style={{color:'#1976d2'}}>Two Step Registration Form</h2>
         <div className='center-stepper'>
-          <Stepper style={{width: '100%'}} activeStep='1' orientation='horizontal' >
+          <Stepper style={{width: '100%'}} activeStep={currentStep-1} orientation='horizontal' >
             <Step >
               <StepLabel></StepLabel>
             </Step>
@@ -26,7 +38,7 @@ export default function RegisterPage() {
             </Step>
           </Stepper>
         </div>
-        {showStep(1)}   
-    </div>
+        {showStep(currentStep)}
+    </Container>
   )
 }
