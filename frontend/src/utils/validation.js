@@ -1,11 +1,11 @@
 export const validateStepOne = (data) => {
   const errors = {};
 
-  if (!data.fullname?.trim()) {
+  if (!data.fullname) {
     errors.fullname = 'Full Name is required';
   }
 
-  if (!data.email?.trim()) {
+  if (!data.email) {
     errors.email = 'Email is required';
   } else if (!/\S+@\S+\.\S+/.test(data.email)) {
     errors.email = 'Email is invalid';

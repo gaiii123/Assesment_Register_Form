@@ -8,7 +8,6 @@ export default function RegisterPage() {
 
     const {currentStep}= useTwoStepContext();
     function showStep(step){
-        console.log("step:",step)
         switch(step){
             case 1 :
                 return <FirstStep/>
